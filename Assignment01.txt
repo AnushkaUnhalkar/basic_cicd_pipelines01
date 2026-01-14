@@ -133,8 +133,17 @@ ml_ci_project
 Explain
 
 How the pipeline is triggered
+-The pipeline is triggered automatically on every code push or pull request to the repository.
+-CI tools like GitHub Actions start the workflow whenever changes are detected.
+
 How performance validation is handled
+-After model training, the model is evaluated using predefined metrics such as accuracy.
+-A minimum performance threshold is defined, and the pipeline continues only if the model meets this threshold.
+
 How failures are reported
+-If model accuracy is below the threshold, the evaluation script raises an error.
+-The CI pipeline is marked as failed, and error logs are displayed in the CI tool dashboard.
+
 
 PRACTICAL QUESTION 2
 Model Validation and Approval Pipeline
@@ -167,8 +176,17 @@ ml_cd_validation
 Explain
 
 Validation criteria
+-The trained model must achieve an accuracy greater than or equal to the defined threshold (e.g., 80%).
+-Models failing to meet the criteria are rejected automatically.
+
 Model approval process
+-Approved models are registered in a model registry with version details.
+-Only validated and approved models are promoted for deployment.
+
 Difference between CI and CD
+-Continuous Integration (CI) focuses on training, testing, and validating the model.
+-Continuous Deployment (CD) deploys only the approved models into production.
+
 
 PRACTICAL QUESTION 3
 Automated Retraining Pipeline Design
@@ -201,8 +219,18 @@ ml_automation_project
 Explain
 
 Retraining strategy
+-The model is retrained periodically using a scheduler such as cron or GitHub Actions schedule.
+-Retraining can also be triggered when new data becomes available.
+
 Performance tracking logic
+-Evaluation metrics from each training run are stored in a history file.
+-Current model performance is compared with past performance to track improvements or degradation.
+
 Automation benefits
+-Reduces manual intervention
+-Ensures models stay updated with new data
+-Improves consistency and reliability of ML pipelines
+
 
 PRACTICAL QUESTION 4
 Testing Strategy for Machine Learning Pipelines
@@ -234,8 +262,18 @@ ml_testing_pipeline
 Explain
 
 Types of tests used
+-Data validation tests to check data quality
+-Model tests to verify model creation
+-Performance tests to ensure metrics meet thresholds
+
 When tests are executed
+-Tests are executed automatically during the CI process after every code change.
+-Testing occurs before model training or deployment.
+
 How test failures impact the pipeline
+-If any test fails, the pipeline stops immediately.
+-The model is not deployed until the issue is fixed.
+
 
 PRACTICAL QUESTION 5
 Monitoring and Performance Comparison Design
@@ -263,5 +301,13 @@ ml_monitoring_project
 Explain
 
 Performance comparison approach
+-Current model metrics are compared with historical performance metrics.
+-Average or baseline metrics are used for comparison.
+
 How degradation is detected
+-If the current model performance is lower than historical averages, degradation is detected.
+-Threshold-based rules help identify significant drops.
+
 How alerts are generated
+-Alerts are generated when degradation rules are violated.
+-Notifications can be logged, printed, or extended to email or monitoring tools.
