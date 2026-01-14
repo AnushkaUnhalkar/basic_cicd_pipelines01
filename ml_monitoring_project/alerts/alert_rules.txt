@@ -1,0 +1,3 @@
+Trigger alert if:
+- Current accuracy < historical average accuracy
+- Performance drop > 5%

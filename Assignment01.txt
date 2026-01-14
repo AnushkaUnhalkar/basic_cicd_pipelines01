@@ -1,0 +1,267 @@
+SECTION A INTERVIEW QUESTIONS
+10 Questions 2 Marks Each
+Total 20 Marks
+
+1 What is CI CD and why is it important in Machine Learning projects
+-CI/CD stands for Continuous Integration and Continuous Deployment/Delivery.
+-CI automatically builds, tests, and validates code whenever changes are made.
+-CD automatically deploys validated models to production.
+-Importance in ML:
+ +Automates model training and testing
+ +Prevents broken models from deployment
+ +Ensures reproducibility
+ +Reduces manual errors
+ +Enables faster iteration
+
+
+2 How does CI CD for Machine Learning differ from traditional software CI CD
+Traditional CI/CD	
+-Tests code only	
+-Deterministic output	
+-No data dependency	
+-Binary artifacts	
+
+ML CI/CD
+-Tests code + data + model
+-Probabilistic output
+-Strong data dependency
+-Models, metrics, datasets
+
+ML CI/CD also handles data drift, model validation, and retraining.
+
+
+3 What are the main stages of a Machine Learning pipeline that should be automated
+i.Data ingestion
+ii.Data preprocessing
+iii.Model training
+iv.Model evaluation
+v.Model validation
+vi.Model versioning
+vii.Deployment
+viii.Monitoring
+
+
+4 Explain the role of version control in Machine Learning CI CD
+-Tracks code changes (Git)
+-Tracks dataset versions
+-Tracks model versions
+-Enables rollback
+-Supports collaboration
+-Tools: Git, DVC, MLflow
+
+
+5 What is data drift and how can CI CD help detect it
+Data drift occurs when new production data differs from training data.
+CI/CD helps by:
+-Running statistical tests
+-Comparing distributions
+-Failing pipeline if drift exceeds threshold
+
+
+6 How can model validation be automated in a Continuous Integration pipeline
+-Run evaluation scripts
+-Compare metrics to thresholds
+-Fail pipeline if performance drops
+-Example:
+assert accuracy >= 0.85
+
+
+7 What is model versioning and why is it important
+Model versioning tracks model changes over time.
+Importance:
+-Rollback faulty models
+-Compare model performance
+-Reproducibility
+-Audit compliance
+
+
+8 What are common challenges in implementing CI CD for Machine Learning pipelines
+-Data dependency
+-Long training times
+-Non-deterministic results
+-Model performance degradation
+-Environment mismatch
+
+
+9 How can automated testing be applied to Machine Learning models
+-Unit tests for preprocessing
+-Data validation tests
+-Model performance tests
+-Inference tests
+
+
+10 What checks should be performed before deploying a Machine Learning model to production
+-Accuracy threshold met:
+ +No data leakage
+ +Model version tagged
+ +Latency tested
+ +Bias & fairness checked
+ +Logging enabled
+
+
+SECTION B PRACTICAL QUESTIONS
+5 Questions 10 Marks Each
+Total 50 Marks
+
+PRACTICAL QUESTION 1
+Continuous Integration Design for Model Training
+
+Problem Statement
+
+Design a Continuous Integration workflow for a Machine Learning project where every code change triggers model training and evaluation. The pipeline should stop if model performance falls below a defined threshold.
+
+Expected Folder Structure
+
+ml_ci_project
+│
+├── data
+│ └── dataset.csv
+│
+├── src
+│ ├── train.py
+│ └── evaluate.py
+│
+├── tests
+│ └── test_training.py
+│
+├── reports
+│ └── metrics.txt
+│
+├── requirements.txt
+└── README.md
+
+Explain
+
+How the pipeline is triggered
+How performance validation is handled
+How failures are reported
+
+PRACTICAL QUESTION 2
+Model Validation and Approval Pipeline
+
+Problem Statement
+
+Design a CI CD workflow for a classification model where retraining happens on new data and only validated models are approved for deployment.
+
+Expected Folder Structure
+
+ml_cd_validation
+│
+├── data
+│ └── dataset.csv
+│
+├── src
+│ ├── preprocess.py
+│ ├── train.py
+│ └── validate.py
+│
+├── model_registry
+│ └── model_versions.txt
+│
+├── logs
+│ └── pipeline.log
+│
+├── requirements.txt
+└── README.md
+
+Explain
+
+Validation criteria
+Model approval process
+Difference between CI and CD
+
+PRACTICAL QUESTION 3
+Automated Retraining Pipeline Design
+
+Problem Statement
+
+Design an automated Machine Learning pipeline that retrains models periodically and stores performance history for comparison.
+
+Expected Folder Structure
+
+ml_automation_project
+│
+├── data
+│ ├── raw
+│ └── processed
+│
+├── src
+│ ├── preprocess.py
+│ ├── train.py
+│ └── evaluate.py
+│
+├── metrics
+│ └── history.csv
+│
+├── scheduler
+│ └── retrain_config.txt
+│
+└── README.md
+
+Explain
+
+Retraining strategy
+Performance tracking logic
+Automation benefits
+
+PRACTICAL QUESTION 4
+Testing Strategy for Machine Learning Pipelines
+
+Problem Statement
+
+Design a testing strategy for a Machine Learning CI pipeline covering data validation model testing and performance testing.
+
+Expected Folder Structure
+
+ml_testing_pipeline
+│
+├── data
+│ └── dataset.csv
+│
+├── src
+│ └── train.py
+│
+├── tests
+│ ├── test_data.py
+│ ├── test_model.py
+│ └── test_metrics.py
+│
+├── reports
+│ └── test_results.txt
+│
+└── README.md
+
+Explain
+
+Types of tests used
+When tests are executed
+How test failures impact the pipeline
+
+PRACTICAL QUESTION 5
+Monitoring and Performance Comparison Design
+
+Problem Statement
+
+Design a system to monitor Machine Learning model performance across multiple pipeline runs and compare results to detect degradation.
+
+Expected Folder Structure
+
+ml_monitoring_project
+│
+├── metrics
+│ ├── current_metrics.csv
+│ └── historical_metrics.csv
+│
+├── src
+│ └── compare_metrics.py
+│
+├── alerts
+│ └── alert_rules.txt
+│
+└── README.md
+
+Explain
+
+Performance comparison approach
+How degradation is detected
+How alerts are generated
